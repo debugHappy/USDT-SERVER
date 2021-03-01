@@ -7,6 +7,8 @@ USDT-SERVER
 ~~~
 
 npm install 
+
+node server.js
 ~~~
 
 # 如果觉得好可以打赏我
