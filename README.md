@@ -2,7 +2,7 @@
 USDT-SERVER
 
 
-# °²×°
+# install
 
 ~~~
 
