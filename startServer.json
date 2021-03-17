@@ -1,0 +1,6 @@
+{
+  "name"             : "usdt_TRC_server", 
+  "script"           : "server.js",
+  "error_file"       : "/home/wwwlogs/usdt_TRC_server.error.log",
+  "out_file"         : "/home/wwwlogs/usdt_TRC_server.out.log"
+}

@@ -19,7 +19,7 @@ function consoleLog( msg  ){
     console.log( "[" , getNow() , "]" , ":" ,  msg )
 }
 
-
+//输出json
 function echoJsons( code , msg , data = {}  ){
     return {
         code : code, 

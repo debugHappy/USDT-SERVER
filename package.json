@@ -1,24 +1,21 @@
 {
-  "name": "bb",
+  "name": "SERVER",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "async": "^3.2.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "formidable": "^1.2.2",
     "moment": "^2.29.1",
-    "mysql": "^2.18.1",
     "redis": "^3.0.2",
     "superagent": "^6.1.0",
-    "system-sleep": "^1.3.7",
-    "tronweb": "^3.2.2"
+    "tronweb": "^3.2.6"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "code",
   "license": "ISC"
 }
