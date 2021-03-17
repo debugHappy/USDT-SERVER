@@ -7,14 +7,14 @@
 /* http 服务 */ 
 http_host = "127.0.0.1" //注意这个IP最好是内网
 http_port = "8989"
-web_api_domain = "http://aaaa.xxx.com/" //注意这个域名主要是为了接收异步通知
-
-
+web_api_trx_domain = "http://aaaa.xxx.com/rsync/trx_trans.php" //注意这个域名主要是为了接收trx交易异步通知
+web_api_usdt_domain = "http://aaaa.xxx.com/rsync/usdt_trans.php" //注意这个域名主要是为了接收udt的异步通知
 
 
 redis_host = "127.0.0.1"
 redis_port = 6379 
 redis_pass = ""
+redis_key = "system_address" //这个是把系统所有的币地址放入集合的那个key 注意是放在 15 数据库
 
 
 trc20ContractAddress = 'TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t' //合约地址

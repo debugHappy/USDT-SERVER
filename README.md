@@ -3,6 +3,10 @@
 # 不用担心私钥泄露。
 # 不用担心私钥泄露。
 
+~~~
+注意币地址统一使用 base58 格式的
+~~~
+
 # 安装
 
 ~~~
@@ -198,4 +202,99 @@ curl --location --request POST 'http://192.168.1.21:8989/GetTransactionById' \
         "raw_data_hex": "0a02f6e62208d25ce9686f7999f040b8c6ecff822f5aae01081f12a9010a31747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e54726967676572536d617274436f6e747261637412740a15410976782e1b25c5364ea68595145dd20bd9137276121541a614f803b6fd780986a42c78ec9c7f77e6ded13c2244a9059cbb000000000000000000000000a33564d0de15b3c7c4d6c50ab72b32c59ef5bd94000000000000000000000000000000000000000000000000000000000046500070fa82e9ff822f900180b48913"
     }
 }
+~~~
+
+
+
+# 七： trx交易监控
+~~~
+1：修改配置文件异步通知地址 web_api_trx_domain 改为你自己的
+
+2：请把你自己系统里面的所有币地址导入到redis 15 数据库集合里面 key为 配置文件里面定义的那个key 
+
+3：启动： pm2 start monitor_block_trx.js
+
+4:系统会自动的过滤不是系统币地址 ，如果监控到是系统的币地址 ，那么会发送异步通知到配置的那个回调地址里面
+
+~~~
+# TRX异步通知数据如下：
+
+~~~
+
+{
+	"owner_address": "TSSrhM7VRWFZMwPZ4QPqrZULTP4swAkkyW",
+	"to_address": "THK7MrUT6FBCS1RPqgcspY3ehP6pAo7DoN",
+	"txID": "07450f4027f3ab21bf178d36bf57815b73f8e4d2fb8b8c5e0556d1b67cb7ea13",
+	"amount": 4200,
+	"extra": {
+		"ret": [{
+			"contractRet": "SUCCESS"
+		}],
+		"signature": ["84c2cdb5990fc3f6fd46278b9575c646377cdb3190765df4215df056bb4e9741e2dd5cd9f8bfbab5f674469218f2074e73b14a48e9460b7f115df77d8aaa8a0601"],
+		"txID": "07450f4027f3ab21bf178d36bf57815b73f8e4d2fb8b8c5e0556d1b67cb7ea13",
+		"raw_data": {
+			"contract": [{
+				"parameter": {
+					"value": {
+						"amount": 4200,
+						"asset_name": "31303033353333",
+						"owner_address": "41b4bcb59b5a7d446ad2ec0780af85fa36c4ed14ee",
+						"to_address": "41508c7d8edcd6c0eb1f24dbb898cbf610d2e2f789"
+					},
+					"type_url": "type.googleapis.com/protocol.TransferAssetContract"
+				},
+				"type": "TransferAssetContract"
+			}],
+			"ref_block_bytes": "4c96",
+			"ref_block_hash": "00f3655724057d2a",
+			"expiration": 1615975383000,
+			"timestamp": 1615975325824
+		},
+		"raw_data_hex": "0a024c96220800f3655724057d2a40d8ff8dfd832f5a74080212700a32747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e5472616e736665724173736574436f6e7472616374123a0a0731303033353333121541b4bcb59b5a7d446ad2ec0780af85fa36c4ed14ee1a1541508c7d8edcd6c0eb1f24dbb898cbf610d2e2f78920e8207080c18afd832f"
+	}
+}
+
+~~~
+
+
+
+# 八： USDT交易监控
+~~~
+1：修改配置文件异步通知地址 web_api_usdt_domain 改为你自己的
+
+2：请把你自己系统里面的所有币地址导入到redis 15 数据库集合里面 key为 配置文件里面定义的那个key 
+
+3：启动： pm2 start monitor_block_usdt.js
+
+4:系统会自动的过滤不是系统的币地址 ，如果监控到是系统的币地址的交易 ，那么会发送异步通知到配置的那个回调地址里面
+
+~~~
+# USDT异步通知数据如下：
+
+~~~
+
+{
+	"owner_address": "THkmAtkdj3zp9FBzv8dBT4iEPX4qgP6xFh",
+	"to_address": "TPEB1wuJ6EvJBaFjANsppQ2geqKVV8TMxE",
+	"txID": "ad7b37ce3f04b5531f1cf9e1e561f2baefa21f4d1b064f94bd064be2e472fcf9",
+	"amount": 1650.52,
+	"extra": {
+		"block": 28527969,
+		"timestamp": 1615975878000,
+		"contract": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+		"name": "Transfer",
+		"transaction": "ad7b37ce3f04b5531f1cf9e1e561f2baefa21f4d1b064f94bd064be2e472fcf9",
+		"result": {
+			"0": "0x556673dad4114df924fd0e161195dde4594bb80a",
+			"1": "0x916e37c7635f9552316ee7cec1599d8ff0bb03c3",
+			"2": "1650520000",
+			"from": "0x556673dad4114df924fd0e161195dde4594bb80a",
+			"to": "0x916e37c7635f9552316ee7cec1599d8ff0bb03c3",
+			"value": "1650520000"
+		},
+		"resourceNode": "fullNode",
+		"unconfirmed": true
+	}
+}
+
 ~~~
