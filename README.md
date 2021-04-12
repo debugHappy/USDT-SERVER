@@ -299,6 +299,30 @@ curl --location --request POST 'http://192.168.1.21:8989/GetTransactionById' \
 
 ~~~
 
+# 九： 保存需要监控的地址，接口如下
+
+~~~
+curl --location --request POST 'http://192.168.1.21:8989/save_check_address' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+    "TDhSd1bZEfCD5HF2dy8dGicZbYfg1MWxND",
+    "TNhd6HJmBuvfR3F129p8zBC3nTKh4E3Gnf", 
+    "TC1CYwkVLYa3aBDVEoEsC3wmTPKCBEdoGf"
+]'
+~~~
+## 接口返回
+
+~~~
+{
+    "code": 1,
+    "msg": "ok",
+    "data": {
+        "success_num": 1
+    }
+}
+~~~
+
+
 
 # contact me
 
